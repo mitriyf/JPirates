@@ -1,0 +1,10 @@
+name: JPirates
+version: '1.0'
+main: dev.jdevs.jPirates.JPirates
+api-version: '1.13'
+load: STARTUP
+depend: [ FastLogin ]
+authors: [ Mitriyf ]
+commands:
+  jpirates:
+    aliases: [ pirates ]

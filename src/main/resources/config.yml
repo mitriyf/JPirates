@@ -1,0 +1,26 @@
+# Settings.
+settings:
+  # Insert hex or minimessage
+  # minimessage - for Paper, 1.18+.
+  # hex - This has been working since 1.16.5, but it also supports normal modes of operation.
+  translate: hex
+  # Whitelist.
+  whitelist:
+    # Enabled? true/false
+    enabled: true
+# Messages.
+messages:
+  # Actions:
+  # [message] message - Send a message to the player.
+  # [broadcast] message - Send a message to all players
+  # [player] command - Run the command on behalf of the player.
+  # [log] message - Send a message to the console.
+  # [delay] ticks - Make a delay between actions. In ticks. (20 ticks = 1 second)
+  # If there are no rights.
+  permission-no:
+    - "[delay] 0"
+  # Kick if it's not on the white list.
+  whitelist-kick: "§cYou are not in the whitelist. §fPlease contact the administration: §6spigotmc.ru"
+# Nicknames.
+nicknames:
+  - ""
