@@ -2,7 +2,8 @@
 ## 🦜 Licensed players are good, but what about pirates? Add the pirates you approve of by nickname.
 This plugin adds white lists for pirates, but not for licenses. So, you can play with your pirate friends even with a license. At the same time, the chips of licensed players are saved (only for licenses)!
 
-<p align="center"><img width="791" height="231" alt="image" src="https://github.com/user-attachments/assets/4c3756b1-5064-45c3-90de-bac32df5a4ac" /></p>
+<p align="center"><img width="836" height="216" alt="image" src="https://github.com/user-attachments/assets/2efef428-44b2-4687-8489-9b706d3f3d02" />
+</p>
 <p align="center"><img width="521" height="150" alt="image" src="https://github.com/user-attachments/assets/fb90c218-feee-409d-ab25-aae5555df602" /></p>
 
 The latest ready-made configuration: https://github.com/mitriyf/JPirates/releases/download/1.1-release/Configurations.zip
