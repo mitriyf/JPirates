@@ -37,3 +37,6 @@ Choose one of the ProtocolLib versions depending on your Java version. If you to
 - /jpirates list - Get a white list of pirates.
 - /jpirates enable - Enable the list of pirates (default)
 - /jpirates disable - Turn off the list of pirates.
+
+### Permission:
+- **jpirates.use** - Allow the use of the command.
