@@ -22,8 +22,8 @@ public class Values {
     private final Pattern action_pattern = Pattern.compile("\\[(\\w+)] ?(.*)");
     private boolean whitelistEnabled, miniMessage;
     private List<Action> noPermission;
-    private List<String> nicknames;
     private String whitelistMessage;
+    private List<String> nicknames;
     private Colorizer colorizer;
 
     public Values(JPirates plugin) {
@@ -47,13 +47,12 @@ public class Values {
         nicknames = config.getStringList("nicknames");
     }
 
-    @SuppressWarnings("all")
     private void setupSettings(ConfigurationSection settings) {
         ConfigurationSection whitelist = null;
         if (settings != null) {
             whitelist = settings.getConfigurationSection("whitelist");
-            String translate = settings.getString("translate").toLowerCase();
-            if (miniMessage && translate.equals("minimessage")) {
+            String translate = settings.getString("translate");
+            if (translate != null && miniMessage && translate.equalsIgnoreCase("minimessage")) {
                 colorizer = new MiniMessageColorizer();
             } else {
                 colorizer = new LegacyColorizer();

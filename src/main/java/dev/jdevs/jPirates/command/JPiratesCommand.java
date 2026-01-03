@@ -6,7 +6,6 @@ import dev.jdevs.jPirates.values.Values;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -20,7 +19,7 @@ public class JPiratesCommand implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String s, @NotNull String @NotNull [] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String s, String[] args) {
         if (!sender.hasPermission("jpirates.use")) {
             utils.sendMessage(sender, values.getNoPermission());
             return false;
@@ -75,6 +74,10 @@ public class JPiratesCommand implements CommandExecutor {
 
     private void addNickname(CommandSender sender, String nickname) {
         List<String> nicknames = values.getNicknames();
+        if (nicknames.contains(nickname)) {
+            sender.sendMessage("§cError!§f This player has already been added: §a" + nickname);
+            return;
+        }
         nicknames.add(nickname);
         values.setNicknames(nicknames);
         sender.sendMessage("§aSuccessfully!§f A nickname has been §aadded: " + nickname);
@@ -88,7 +91,9 @@ public class JPiratesCommand implements CommandExecutor {
         }
         nicknames.remove(nickname);
         values.setNicknames(nicknames);
-        utils.kick(nickname);
+        if (values.isWhitelistEnabled()) {
+            utils.kick(nickname);
+        }
         sender.sendMessage("§aSuccessfully!§f A nickname has been §cremoved: §a" + nickname);
     }
 

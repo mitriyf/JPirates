@@ -6,7 +6,10 @@ import dev.jdevs.jPirates.JPirates;
 import dev.jdevs.jPirates.utils.Utils;
 import dev.jdevs.jPirates.values.Values;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 public class LoginEvents implements Listener {
@@ -29,6 +32,22 @@ public class LoginEvents implements Listener {
             return;
         }
         plugin.getServer().getScheduler().runTask(plugin, () -> utils.kick(name));
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onPlayerChat(AsyncPlayerChatEvent e) {
+        if (utils.getStatus().containsKey(e.getPlayer().getName())) {
+            return;
+        }
+        e.setCancelled(true);
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent e) {
+        if (utils.getStatus().containsKey(e.getPlayer().getName())) {
+            return;
+        }
+        e.setCancelled(true);
     }
 
     @EventHandler
