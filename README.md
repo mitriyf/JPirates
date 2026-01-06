@@ -15,6 +15,9 @@ The latest ready-made configuration: https://github.com/mitriyf/JPirates/release
 // Some plugin updates on SpigotMC.ru may be delayed.
 
 // The plugin requires at least Java 11+ to function.
+
+// You must allow players without a license to connect in server.propetories:
+online-mode: false
 ## 🚀 Requirements:
 - Fork BukkitFastLogin (Download the fork from here: https://github.com/mitriyf/FastLogin/releases/tag/1.1 )
 Also, ProtocolLib is required:
