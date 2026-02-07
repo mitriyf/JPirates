@@ -53,5 +53,10 @@ Choose one of the ProtocolLib versions depending on your Java version. If you to
 ### 📖 Permission:
 - **jpirates.use** - Allow the use of the command.
 
+### 🌐 API (from v1.2):
+- Events:
+  - JPiratesJoinEvent
+  - JPiratesQuitEvent
+
 ### 📝 Configurations:
 You can view the configurations by going to src/main/resources/config.yml or by following the link: https://github.com/mitriyf/JPirates/blob/main/src/main/resources/config.yml
