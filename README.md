@@ -11,8 +11,7 @@ online-mode: false
 
 ## ☠️ Don't let foreign pirates in!
 Only allow your pirate friends who have been approved by their nickname.
-<p align="center"><img width="836" height="216" alt="image" src="https://github.com/user-attachments/assets/2efef428-44b2-4687-8489-9b706d3f3d02" />
-</p>
+<p align="center"><img width="836" height="216" alt="image" src="https://github.com/user-attachments/assets/2efef428-44b2-4687-8489-9b706d3f3d02" /></p>
 <p align="center"><img width="521" height="150" alt="image" src="https://github.com/user-attachments/assets/fb90c218-feee-409d-ab25-aae5555df602" /></p>
 
 ## 🚀 Requirements:
