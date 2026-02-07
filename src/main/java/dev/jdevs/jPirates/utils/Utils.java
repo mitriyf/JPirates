@@ -38,20 +38,16 @@ public class Utils {
     }
 
     public void sendMessage(CommandSender sender, List<Action> actions) {
-        sendMessage(sender, actions, null, null);
-    }
-
-    public void sendMessage(CommandSender sender, List<Action> actions, String[] search, String[] replace) {
         scheduler.runTaskAsynchronously(plugin, () -> {
             for (Action action : actions) {
-                sendSender(sender, action, search, replace);
+                sendSender(sender, action);
             }
         });
     }
 
-    private void sendSender(CommandSender sender, Action action, String[] search, String[] replace) {
+    private void sendSender(CommandSender sender, Action action) {
         ActionType type = action.getType();
-        String context = replaceEach(action.getContext(), search, replace);
+        String context = action.getContext();
         switch (type) {
             case CONSOLE:
                 commonUtils.dispatchConsole(context);
@@ -74,24 +70,6 @@ public class Utils {
                 sendMessage(sender, context);
                 break;
         }
-    }
-
-    private String replaceEach(String text, String[] searchList, String[] replacementList) {
-        if (text.isEmpty() || searchList == null || replacementList == null) {
-            return text;
-        }
-        final StringBuilder result = new StringBuilder(text);
-        for (int i = 0; i < searchList.length; i++) {
-            final String search = searchList[i];
-            final String replacement = replacementList[i];
-            int start = 0;
-            while ((start = result.indexOf(search, start)) != -1) {
-                result.replace(start, start + search.length(), replacement);
-                start += replacement.length();
-            }
-        }
-
-        return result.toString();
     }
 
     @SuppressWarnings("all")

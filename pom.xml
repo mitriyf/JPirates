@@ -6,7 +6,7 @@
 
     <groupId>dev.jdevs</groupId>
     <artifactId>JPirates</artifactId>
-    <version>1.1</version>
+    <version>1.2</version>
     <packaging>jar</packaging>
 
     <name>JPirates</name>
@@ -27,11 +27,6 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.5.3</version>
             </plugin>
         </plugins>
         <resources>
