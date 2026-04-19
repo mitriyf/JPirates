@@ -7,7 +7,7 @@ This plugin adds white lists for pirates, but not for licenses. So, you can play
 - $ The plugin requires at least Java 11+ to function.
 - $ You must allow players without a license to connect in server.propetories:
 online-mode: false
-- $ The latest ready-made configuration: https://github.com/mitriyf/JPirates/releases/download/1.1-release/Configurations.zip
+- $ The latest ready-made configuration: https://github.com/mitriyf/JPirates/releases/download/1.3-release/Configurations.zip
 
 ## ☠️ Don't let foreign pirates in!
 Only allow your pirate friends who have been approved by their nickname.
