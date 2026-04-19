@@ -1,8 +1,7 @@
 name: JPirates
-version: '1.2'
+version: '1.3'
 main: dev.jdevs.jPirates.JPirates
 api-version: '1.13'
-load: STARTUP
 depend: [ FastLogin ]
 authors: [ Mitriyf ]
 commands:

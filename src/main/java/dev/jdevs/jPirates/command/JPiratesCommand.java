@@ -10,10 +10,12 @@ import org.bukkit.command.CommandSender;
 import java.util.List;
 
 public class JPiratesCommand implements CommandExecutor {
+    private final JPirates plugin;
     private final Values values;
     private final Utils utils;
 
     public JPiratesCommand(JPirates plugin) {
+        this.plugin = plugin;
         utils = plugin.getUtils();
         values = plugin.getValues();
     }
@@ -30,6 +32,9 @@ public class JPiratesCommand implements CommandExecutor {
         switch (args[0].toLowerCase()) {
             case "reload": {
                 values.setup();
+                if (plugin.getLoginListener() == null) {
+                    plugin.registerListener();
+                }
                 sender.sendMessage("§aSuccessfully!");
                 break;
             }

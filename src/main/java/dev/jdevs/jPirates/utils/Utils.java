@@ -2,6 +2,8 @@ package dev.jdevs.jPirates.utils;
 
 import com.github.games647.fastlogin.core.PremiumStatus;
 import dev.jdevs.jPirates.JPirates;
+import dev.jdevs.jPirates.api.events.JPiratesJoinEvent;
+import dev.jdevs.jPirates.api.events.JPiratesQuitEvent;
 import dev.jdevs.jPirates.utils.actions.Action;
 import dev.jdevs.jPirates.utils.actions.ActionType;
 import dev.jdevs.jPirates.utils.common.CommonUtils;
@@ -87,6 +89,14 @@ public class Utils {
                 kick(name);
             }
         }
+    }
+
+    public void callJPiratesJoinEvent(String username, PremiumStatus premiumStatus, boolean inWhitelist) {
+        scheduler.runTask(plugin, () -> plugin.getServer().getPluginManager().callEvent(new JPiratesJoinEvent(username, premiumStatus, inWhitelist)));
+    }
+
+    public void callJPiratesQuitEvent(Player player, String username, PremiumStatus premiumStatus, boolean inWhitelist) {
+        scheduler.runTask(plugin, () -> plugin.getServer().getPluginManager().callEvent(new JPiratesQuitEvent(player, username, premiumStatus, inWhitelist)));
     }
 
     public boolean checkNotPremium(String name) {
