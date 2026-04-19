@@ -1,8 +1,8 @@
 # 🏴‍☠️ JPirates [![CodeFactor](https://www.codefactor.io/repository/github/mitriyf/jpirates/badge)](https://www.codefactor.io/repository/github/mitriyf/jpirates)
 ## 🦜 Licensed players are good, but what about pirates? Add the pirates you approve of by nickname.
 This plugin adds white lists for pirates, but not for licenses. So, you can play with your pirate friends even with a license. At the same time, the chips of licensed players are saved (only for licenses)!
-- $ Versions 1.7.1-1.21 are supported. (I'm not sure about 1.7.1, but if you encounter issues with this version, please contact GitHub or RuBukkit)
-- $ It has been tested on versions 1.8.8 and 1.21.10.
+- $ Versions 1.7.1-26.1+ are supported. (I'm not sure about 1.7.1, but if you encounter issues with this version, please contact GitHub or RuBukkit)
+- $ It has been tested on versions 1.8.8, 1.21.10, and 26.1.1.
 - $ Some plugin updates on SpigotMC.ru may be delayed.
 - $ The plugin requires at least Java 11+ to function.
 - $ You must allow players without a license to connect in server.propetories:
