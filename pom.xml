@@ -6,7 +6,7 @@
 
     <groupId>dev.jdevs</groupId>
     <artifactId>JPirates</artifactId>
-    <version>1.2</version>
+    <version>1.4</version>
     <packaging>jar</packaging>
 
     <name>JPirates</name>

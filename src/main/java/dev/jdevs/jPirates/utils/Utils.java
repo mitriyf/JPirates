@@ -11,13 +11,12 @@ import dev.jdevs.jPirates.values.Values;
 import lombok.Getter;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitScheduler;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 @Getter
@@ -25,7 +24,6 @@ public class Utils {
     private final Values values;
     private final Logger logger;
     private final JPirates plugin;
-    private final CountDownLatch latch;
     private final CommonUtils commonUtils;
     private final BukkitScheduler scheduler;
     private final Map<String, PremiumStatus> status = new HashMap<>();
@@ -34,17 +32,32 @@ public class Utils {
         this.plugin = plugin;
         values = plugin.getValues();
         logger = plugin.getLogger();
-        latch = new CountDownLatch(1);
         scheduler = plugin.getServer().getScheduler();
         commonUtils = new CommonUtils(this, plugin);
     }
 
+
     public void sendMessage(CommandSender sender, List<Action> actions) {
-        scheduler.runTaskAsynchronously(plugin, () -> {
-            for (Action action : actions) {
-                sendSender(sender, action);
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                int delayTicks = 0;
+                for (Action action : actions) {
+                    if (action.getType() == ActionType.DELAY) {
+                        try {
+                            delayTicks += formatInt(action.getContext());
+                        } catch (Exception ignored) {
+                        }
+                        continue;
+                    }
+                    if (delayTicks > 0) {
+                        plugin.getServer().getScheduler().runTaskLater(plugin, () -> sendSender(sender, action), delayTicks);
+                    } else {
+                        sendSender(sender, action);
+                    }
+                }
             }
-        });
+        }.runTask(plugin);
     }
 
     private void sendSender(CommandSender sender, Action action) {
@@ -59,14 +72,6 @@ public class Utils {
                 break;
             case LOG:
                 log(context);
-                break;
-            case DELAY:
-                try {
-                    if (latch.await(formatInt(context) * 50L, TimeUnit.MILLISECONDS)) {
-                        break;
-                    }
-                } catch (Exception ignored) {
-                }
                 break;
             default:
                 sendMessage(sender, context);

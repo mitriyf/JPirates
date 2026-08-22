@@ -1,6 +1,5 @@
 package dev.jdevs.jPirates.values;
 
-import com.google.common.collect.ImmutableList;
 import dev.jdevs.jPirates.JPirates;
 import dev.jdevs.jPirates.utils.actions.Action;
 import dev.jdevs.jPirates.utils.actions.ActionType;
@@ -12,12 +11,16 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Getter
 public class Values {
+    private final Logger logger;
     private final JPirates plugin;
     private final Pattern action_pattern = Pattern.compile("\\[(\\w+)] ?(.*)");
     private boolean whitelistEnabled, miniMessage;
@@ -28,6 +31,7 @@ public class Values {
 
     public Values(JPirates plugin) {
         this.plugin = plugin;
+        logger = plugin.getLogger();
         try {
             Class.forName("net.kyori.adventure.text.minimessage.MiniMessage");
             miniMessage = true;
@@ -99,19 +103,19 @@ public class Values {
         return new Action(type, matcher.group(2).trim());
     }
 
-    public List<Action> getActionList(List<String> actionStrings) {
-        ImmutableList.Builder<Action> actionListBuilder = ImmutableList.builder();
+    private List<Action> getActionList(List<String> actionStrings) {
+        List<Action> actionListBuilder = new ArrayList<>();
         for (String actionString : actionStrings) {
             actionListBuilder.add(fromString(actionString));
         }
-        return actionListBuilder.build();
+        return Collections.unmodifiableList(actionListBuilder);
     }
 
     private void save(FileConfiguration config) {
         try {
             config.save(new File(plugin.getDataFolder(), "config.yml"));
         } catch (Exception e) {
-            plugin.getLogger().warning("Error: " + e);
+            logger.warning("Error: " + e);
         }
     }
 }
